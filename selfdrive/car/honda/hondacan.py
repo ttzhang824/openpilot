@@ -1,5 +1,5 @@
 from openpilot.common.conversions import Conversions as CV
-from openpilot.selfdrive.car.honda.values import HondaFlags, HONDA_BOSCH, HONDA_BOSCH_RADARLESS, CAR, CarControllerParams
+from openpilot.selfdrive.car.honda.values import HondaFlags, HONDA_BOSCH, HONDA_BOSCH_RADARLESS, CAR, CarControllerParams, SERIAL_STEERING
 
 # CAN bus layout with relay
 # 0 = ACC-CAN - radar side
@@ -112,9 +112,11 @@ def create_bosch_supplemental_1(packer, car_fingerprint):
     "SET_ME_X80": 0x80,
     "SET_ME_X10": 0x10,
   }
-  bus = get_lkas_cmd_bus(car_fingerprint)
-  return packer.make_can_msg("BOSCH_SUPPLEMENTAL_1", bus, values)
+#  bus = get_lkas_cmd_bus(car_fingerprint)
+#  return packer.make_can_msg("BOSCH_SUPPLEMENTAL_1", bus, values)
 
+  bus = 2 if car_fingerprint in SERIAL_STEERING else get_lkas_cmd_bus(car_fingerprint, radar_disabled)
+  return packer.make_can_msg("STEERING_CONTROL", bus, values)
 
 def create_ui_commands(packer, CP, enabled, pcm_speed, hud, is_metric, acc_hud, lkas_hud):
   commands = []
