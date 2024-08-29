@@ -294,16 +294,19 @@ class CarState(CarStateBase):
 
   @staticmethod
   def get_cam_can_parser(CP):
-    messages = [
-      ("STEERING_CONTROL", 100),
-    ]
-   
+    messages = []
+
+    if CP.carFingerprint not in SERIAL_STEERING:
+      messages = [
+        ("STEERING_CONTROL", 100),
+      ]
+
     if CP.carFingerprint in SERIAL_STEERING:
-      messages = [("STEER_MOTOR_TORQUE", 100),
-                ("STEER_STATUS", 100)]
-      messages += [("MOTOR_TORQUE", "STEER_MOTOR_TORQUE"),
-                  ("STEER_TORQUE_SENSOR", "STEER_STATUS"),
-                  ("STEER_STATUS", "STEER_STATUS")]
+      messages = [
+        ("STEERING_CONTROL", 100),
+        ("STEER_MOTOR_TORQUE", 100),
+        ("STEER_STATUS", 100)
+        ]
     
     if CP.carFingerprint in HONDA_BOSCH_RADARLESS:
       messages.append(("LKAS_HUD", 10))
