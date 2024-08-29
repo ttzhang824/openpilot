@@ -73,7 +73,7 @@ def get_can_signals(CP, gearbox_msg, main_on_sig_msg):
       ("SCM_BUTTONS", 25),
     ]
 
-  if CP.carFingerprint in (CAR.CRV_HYBRID, CAR.CIVIC_BOSCH_DIESEL, CAR.ACURA_RDX_3G, CAR.HONDA_E, CAR.ACURA_MDX_HYBRID, CAR.ACURA_MDX):
+  if CP.carFingerprint in (CAR.CRV_HYBRID, CAR.CIVIC_BOSCH_DIESEL, CAR.ACURA_RDX_3G, CAR.HONDA_E, CAR.ACURA_MDX_HYBRID, CAR.ACURA_MDX, CAR.ACURA_MDX_20A):
     checks.append((gearbox_msg, 50))
   else:
     checks.append((gearbox_msg, 100))
