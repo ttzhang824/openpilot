@@ -317,8 +317,6 @@ BO_ 660 SCM_FEEDBACK: 8 SCM
  SG_ WIPERS_SPEED : 4|2@0+ (1,0) [0|3] "" EON
 
 
-
-
 CM_ SG_ 427 EPS_LKAS_ON "Signal from EPStoLKAS B1 O5";
 CM_ SG_ 427 LIN_LKAS_B0_O4 "i think this signal says MCU would disengage given current factors...";
 CM_ SG_ 490 LONG_ACCEL "wheel speed derivative, noisy and zero snapping";
