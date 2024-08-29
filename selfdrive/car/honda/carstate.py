@@ -303,7 +303,7 @@ class CarState(CarStateBase):
 
     if CP.carFingerprint in SERIAL_STEERING:
       messages = [
-        ("STEERING_CONTROL", 100),
+        #("STEERING_CONTROL", 100),
         ("STEER_MOTOR_TORQUE", 100),
         ("STEER_STATUS", 100)
         ]
