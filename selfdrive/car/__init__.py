@@ -23,6 +23,15 @@ def apply_hysteresis(val: float, val_steady: float, hyst_gap: float) -> float:
     val_steady = val + hyst_gap
   return val_steady
 
+class CivicParams:
+  MASS = 1326. + STD_CARGO_KG
+  WHEELBASE = 2.70
+  CENTER_TO_FRONT = WHEELBASE * 0.4
+  CENTER_TO_REAR = WHEELBASE - CENTER_TO_FRONT
+  ROTATIONAL_INERTIA = 2500
+  TIRE_STIFFNESS_FRONT = 192150
+  TIRE_STIFFNESS_REAR = 202500
+
 
 def create_button_events(cur_btn: int, prev_btn: int, buttons_dict: Dict[int, capnp.lib.capnp._EnumModule],
                          unpressed_btn: int = 0) -> List[capnp.lib.capnp._DynamicStructBuilder]:
