@@ -109,6 +109,9 @@ class CAR(StrEnum):
   ACURA_MDX = "ACURA MDX 2018 STANDARD SERIAL STEERING"
   ACURA_MDX_20A = "ACURA MDX 2020 STANDARD SERIAL STEERING"
 
+# diag message that in some Nidec cars only appear with 1s freq if VIN query is performed
+DIAG_MSGS = {1600: 5, 1601: 8}
+
 class Footnote(Enum):
   CIVIC_DIESEL = CarFootnote(
     "2019 Honda Civic 1.6L Diesel Sedan does not have ALC below 12mph.",
