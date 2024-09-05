@@ -2,7 +2,7 @@ from collections import namedtuple
 
 from cereal import car
 from openpilot.common.numpy_fast import clip, interp
-from openpilot.common.realtime import DT_CTRL
+from openpilot.common.realtime import DT_CTRL   #// time step for each process  DT_CTRL = 0.01  # controlsd
 from opendbc.can.packer import CANPacker
 from openpilot.selfdrive.car import create_gas_interceptor_command, apply_driver_steer_torque_limits
 from openpilot.selfdrive.car.honda import hondacan
@@ -99,13 +99,13 @@ HUDData = namedtuple("HUDData",
 
 
 def rate_limit_steer(new_steer, last_steer):
-  # TODO just hardcoded ramp to min/max in 0.33s for all Honda
+  # TODO just hardcoded ramp to min/max in 0.33s for all Honda   DT_CTRL = 0.01
   MAX_DELTA = 3 * DT_CTRL
   return clip(new_steer, last_steer - MAX_DELTA, last_steer + MAX_DELTA)
 
 
 class CarController:
-  def __init__(self, dbc_name, CP, VM):
+  def __init__(self, dbc_name, CP, VM):   #// CP is the can bus
     self.CP = CP
     self.packer = CANPacker(dbc_name)
     self.params = CarControllerParams(CP)
