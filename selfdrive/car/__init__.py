@@ -88,6 +88,16 @@ def dbc_dict(pt_dbc, radar_dbc, chassis_dbc=None, body_dbc=None) -> Dict[str, st
 
 def apply_driver_steer_torque_limits(apply_torque, apply_torque_last, driver_torque, LIMITS, ss=False):
 
+# class LKAS_LIMITS:
+#  STEER_MAX = 240
+#  STEER_THRESHOLD = 15
+#  STEER_DELTA_UP = 5
+#  STEER_DELTA_DOWN = 9
+#  STEER_DRIVER_ALLOWANCE = 25
+#  STEER_DRIVER_MULTIPLIER = 18
+#  STEER_DRIVER_FACTOR = 1
+
+  
   # limits due to driver torque
   driver_max_torque = LIMITS.STEER_MAX + (LIMITS.STEER_DRIVER_ALLOWANCE + driver_torque * LIMITS.STEER_DRIVER_FACTOR) * LIMITS.STEER_DRIVER_MULTIPLIER
   driver_min_torque = -LIMITS.STEER_MAX + (-LIMITS.STEER_DRIVER_ALLOWANCE + driver_torque * LIMITS.STEER_DRIVER_FACTOR) * LIMITS.STEER_DRIVER_MULTIPLIER
